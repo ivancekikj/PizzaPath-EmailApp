@@ -2,6 +2,7 @@ import asyncio
 from email.message import EmailMessage
 
 import aiosmtplib
+
 from app.config import Config
 
 

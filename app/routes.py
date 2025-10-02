@@ -1,8 +1,11 @@
 from fastapi import APIRouter, BackgroundTasks
 
-from app.email_sender import send_email, send_bulk_emails
-from app.models import PromotionalEmailRequest, ConfirmEmailRequest, ResetPasswordRequest
-
+from app.email_sender import send_bulk_emails, send_email
+from app.models import (
+    ConfirmEmailRequest,
+    PromotionalEmailRequest,
+    ResetPasswordRequest,
+)
 
 router = APIRouter()
 
