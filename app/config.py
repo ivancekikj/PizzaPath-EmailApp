@@ -3,25 +3,22 @@ import os
 from dotenv import load_dotenv
 
 
-SMTP_HOST = None
-SMTP_PORT = None
-SMTP_USER = None
-SMTP_PASSWORD = None
-ADMIN_APP = None
+class Config:
+    SMTP_HOST: str = None
+    SMTP_PORT: int = None
+    SMTP_USER: str = None
+    SMTP_PASSWORD: str = None
 
 
 def load_settings():
-    global SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASSWORD, ADMIN_APP
     load_dotenv()
 
-    assert os.getenv("SMTP_HOST") is not None and os.getenv("SMTP_HOST") != "", "SMTP_HOST not configured"
-    assert os.getenv("SMTP_PORT") is not None and os.getenv("SMTP_PORT") != "", "SMTP_PORT not configured"
-    assert os.getenv("SMTP_USER") is not None and os.getenv("SMTP_USER") != "", "SMTP_USER not configured"
-    assert os.getenv("SMTP_PASSWORD") is not None and os.getenv("SMTP_PASSWORD") != "", "SMTP_PASSWORD not configured"
-    assert os.getenv("ADMIN_APP") is not None and os.getenv("ADMIN_APP") != "", "ADMIN_APP not configured"
+    Config.SMTP_HOST = os.getenv("SMTP_HOST")
+    Config.SMTP_PORT = int(os.getenv("SMTP_PORT"))
+    Config.SMTP_USER = os.getenv("SMTP_USER")
+    Config.SMTP_PASSWORD = os.getenv("SMTP_PASSWORD")
 
-    SMTP_HOST = os.getenv("SMTP_HOST")
-    SMTP_PORT = int(os.getenv("SMTP_PORT"))
-    SMTP_USER = os.getenv("SMTP_USER")
-    SMTP_PASSWORD = os.getenv("SMTP_PASSWORD")
-    ADMIN_APP = os.getenv("ADMIN_APP")
+    assert Config.SMTP_HOST is not None and Config.SMTP_HOST != "", "SMTP_HOST not configured"
+    assert Config.SMTP_PORT is not None and Config.SMTP_PORT != "", "SMTP_PORT not configured"
+    assert Config.SMTP_USER is not None and Config.SMTP_USER != "", "SMTP_USER not configured"
+    assert Config.SMTP_PASSWORD is not None and Config.SMTP_PASSWORD != "", "SMTP_PASSWORD not configured"
